@@ -1,0 +1,442 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF; /* Default light background */
+    color: #000000; /* Default text color for light mode */
+    display: flex; /* New: Organize the content in a flex container */
+    flex-direction: column;
+    height: 100vh; /* New: Make the body take up full viewport height */
+}
+
+header {
+    background-color: #F0F0F0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo-container img {
+    max-width: 100px;
+    height: auto;
+}
+
+#main-nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around; /* Changed to space-around to distribute items */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#main-nav ul li a, .theme-switch-wrapper {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 16px;
+    display: block;
+}
+
+#main-nav ul li a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+input[type="search"] {
+    padding: 10px 15px;
+    border: 2px solid #007bff;
+    border-radius: 20px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+    background: url('') no-repeat, linear-gradient(to bottom, #fff, #f9f9f9); 
+}
+
+input[type="search"]:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Structure */
+main {
+    display: flex;
+    flex: 1 1 auto; /* grow and shrink as needed, basis auto */
+    width: 100%; /* Use all horizontal space */
+    padding: 20px; /* Keep padding but ensure it does not push contents */
+    box-sizing: border-box; /* Include padding in width calculations */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.8em;
+    background-color: #F0F0F0;
+    display: block; /* Changed from none to block to make it visible */
+}
+
+/* Modal content */
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+/* The Modal (background) */
+#postModal {
+    display: none;  /* Hidden by default */
+    position: fixed;  /* Stay in place */
+    z-index: 1000;  /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;  /* Full width */
+    height: 100%;  /* Full height */
+    overflow: auto;  /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);  /* Black with opacity */
+}
+
+#postModal .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;  /* Lower the margin for better centering */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;  /* Increase the width for better readability */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.19);  /* Enhance the shadow for depth */
+}
+
+#postModal input[type="text"],
+#postModal textarea {
+    width: 100%;  /* Full width of the modal content */
+    padding: 10px;  /* Adequate padding for better text input */
+    margin-top: 8px;  /* Margin on top for spacing */
+    border: 1px solid #ccc;  /* Defined border */
+    box-sizing: border-box;  /* Border-box for better box model handling */
+}
+
+#postModal button {
+    width: auto;  /* Auto width based on content */
+    padding: 10px 20px;  /* Comfortable padding */
+    margin-top: 20px;  /* Space above the button */
+    background-color: #007bff;  /* A nice blue */
+    color: white;  /* Text color */
+    border: none;
+    cursor: pointer;
+    display: block;  /* Block display to take the full line */
+    margin-left: auto;  /* Align to the right */
+    margin-right: 0;  /* Flush with the right side */
+}
+
+/* The Close Button */
+#postModal .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#postModal .close:hover,
+#postModal .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#forum-section {
+    display: flex;
+    flex-grow: 1; /* Allow this section to take up all available space */
+    flex-direction: row; /* Layout children horizontally */
+}
+
+#posts-container {
+    max-height: 400px;  /* Adjust the height as needed */
+    overflow-y: auto;   /* Enables vertical scrolling */
+    border: 1px solid #ccc; /* Optional: adds a border around the posts container */
+    padding: 10px;
+}
+
+.post {
+    border-bottom: 1px solid #ccc; /* Adds a line between posts */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#new-post {
+    margin-bottom: 10px;
+}
+
+#threads {
+    flex: 3; /* Allows 'threads' to take more space than 'games' */
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px; /* Space between threads and games */
+}
+
+#latest-threads {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#forum-section {
+    display: flex; /* Apply flexbox to the forum section */
+    flex-grow: 1; /* Forum section will grow to fill the space */
+}
+
+#games-section {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    text-align: center;
+    flex: 1; /* Lesser space compared to threads */
+    border: 1px solid #ccc;
+    max-width: 25%;
+  }
+  
+  #games-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  #games-list img {
+    width: auto; /* Set a fixed width */
+    height: 80px; /* Set a fixed height to make all logos the same size */
+    margin: 0 auto; /* Center images in their grid cells */
+    display: block; /* Display block to allow margin auto to work */
+    transition: transform 0.2s;
+    border-radius: 10px; /* Smooth rounded corners */
+    object-fit: cover;
+  }
+  
+  #games-list a {
+    display: flex;  /* Flex display to align image and hyperlink icon */
+    flex-direction: column;  /* Stack them vertically */
+    align-items: center;  /* Center items horizontally */
+    justify-content: center;  /* Center items vertically */
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  #games-list img:hover {
+    transform: scale(1.1);
+  }
+  
+  .hyperlink-icon {
+    display: block;
+    margin-top: 5px;
+  }  
+
+/* General styles for the scrollbar */
+#posts-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;  /* Ensures no background color for the scrollbar */
+}
+
+/* Styles for the scrollbar track */
+#posts-container::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;  /* Rounded corners for the track */
+}
+
+/* Styles for the scrollbar thumb */
+#posts-container::-webkit-scrollbar-thumb {
+    background-color: #888;  /* Dark grey color for the thumb */
+    border-radius: 10px;  /* Rounded corners for the thumb */
+}
+
+/* Styles to remove the scrollbar arrows */
+#posts-container::-webkit-scrollbar-button {
+    display: none;  /* Hides the scrollbar arrows */
+}
+
+/* Night mode styles */
+body.night-mode {
+    background-color: #2c3e50;
+    color: #dbdbdb;
+}
+
+body.night-mode header {
+    background-color: #34495e;
+}
+
+body.night-mode footer {
+    background-color: #34495e;
+}
+
+body.night-mode a, body.night-mode .theme-switch-wrapper, body.night-mode #search {
+    color: #ecdbba;
+}
+
+body.night-mode .modal-content {
+    background-color: #2a2f45;
+    color: #c5c6c7;
+}
+
+body.night-mode button {
+    background-color: #0056b3;
+}
+
+/* Theme switch */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+body.night-mode .theme-switch .slider {
+    background-color: #3b4c64;
+}
+
+/*Auth body for authenticator's forms */
+.auth-form {
+    display: flex; /* Align children with flexbox */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+    width: 100%; /* Full width of its container */
+    padding: 20px;
+    box-sizing: border-box; /* Padding included in the width */
+}
+
+/* Update input and button styles for a more polished look */
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="text"] {
+    width: 100%; /* Make input take the full width of its parent */
+    max-width: 300px; /* Maximum width of input fields */
+    margin: 10px 0; /* Spacing between form items */
+    padding: 12px 20px; /* Larger padding for better appearance */
+    border: 1px solid #ccc; /* Subtle border color */
+    border-radius: 4px; /* Slightly rounded borders */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+    font-size: 1rem; /* Set font size */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.auth-form button {
+    width: 100%; /* Make button take the full width of its parent */
+    max-width: 300px; /* Maximum width of the button */
+    margin: 10px 0; /* Spacing between form items */
+    padding: 12px 20px; /* Larger padding for better appearance */
+    border-radius: 4px; /* Match the input fields' border radius */
+    font-size: 1rem; /* Match the input fields' font size */
+}
+
+/* Ensure the text of labels, inputs and buttons is centered */
+.auth-form h2,
+.auth-form input,
+.auth-form button,
+.auth-form p {
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .auth-form input[type="email"],
+    .auth-form input[type="password"],
+    .auth-form input[type="text"],
+    .auth-form button {
+        max-width: none; /* Inputs and button should take the full width on smaller screens */
+    }
+}
+
+/* Initial display setup for forms */
+#login-form {
+    display: flex; /* Show the login form initially */
+}
+
+#signup-form {
+    display: none; /* Hide the signup form initially */
+}
+
+body.night-mode #games-section {
+    background: #34495e;
+    color: #fff;
+}
+
+body.night-mode #games-list a {
+    color: #fff;
+}
